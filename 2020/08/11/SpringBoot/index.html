@@ -1,0 +1,402 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="theme-color" content="#0078E7"><meta name="author" content="swag pum"><meta name="copyright" content="swag pum"><meta name="generator" content="Hexo 4.2.1"><meta name="theme" content="hexo-theme-yun"><title>SpringBoot | swag pum的小站</title><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@900&amp;display=swap" media="none" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/star-markdown-css@0.1.8/dist/yun/yun-markdown.min.css"><script src="//at.alicdn.com/t/font_1140697_stqaphw3j4.js" async></script><script src="https://cdn.jsdelivr.net/npm/scrollreveal/dist/scrollreveal.min.js" defer></script><script>document.addEventListener("DOMContentLoaded", () => {
+  [".post-card",".post-content img"].forEach((target)=> {
+    ScrollReveal().reveal(target);
+  })
+});
+</script><link class="aplayer-style-marker" rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/aplayer@latest/dist/APlayer.min.css"><script class="aplayer-script-marker" src="https://cdn.jsdelivr.net/npm/aplayer@latest/dist/APlayer.min.js" defer></script><script class="meting-script-marker" src="https://cdn.jsdelivr.net/npm/meting@1/dist/Meting.min.js" defer></script><script src="https://cdn.jsdelivr.net/npm/pjax@latest/pjax.min.js" defer></script><script src="/js/pjax.js" defer></script><link rel="shortcut icon" type="image/svg+xml" href="/yun.svg"><link rel="mask-icon" href="/yun.svg" color="#0078E7"><link rel="alternate icon" href="/yun.ico"><link rel="preload" href="/css/hexo-theme-yun.css" as="style"><link rel="preload" href="/js/utils.js" as="script"><link rel="preload" href="/js/hexo-theme-yun.js" as="script"><link rel="prefetch" href="/js/sidebar.js" as="script"><link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin><link rel="stylesheet" href="/css/hexo-theme-yun.css"><script id="yun-config">
+    const Yun = window.Yun || {};
+    window.CONFIG = {"root":"/","title":"swag pum的小站","version":"0.9.2","anonymous_image":"https://cdn.jsdelivr.net/gh/YunYouJun/cdn/img/avatar/none.jpg","say":{"api":"https://v1.hitokoto.cn","hitokoto":true},"fireworks":{"colors":["102, 167, 221","62, 131, 225","33, 78, 194"]}};
+  </script><meta name="description" content="Spring Boot用来简化spring应用开发，约定大于配置，去繁从简，just run就能创建一个独立的，产品级别的应用">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SpringBoot">
+<meta property="og:url" content="https://github.com/swagpum/swagpum.github.io/tree/master/2020/08/11/SpringBoot/index.html">
+<meta property="og:site_name" content="swag pum的小站">
+<meta property="og:description" content="Spring Boot用来简化spring应用开发，约定大于配置，去繁从简，just run就能创建一个独立的，产品级别的应用">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://gitee.com/zhang_shu_jun/img/raw/master/img/image-20200515202148560.png">
+<meta property="og:image" content="https://gitee.com/zhang_shu_jun/img/raw/master/img/image-20200418112750250.png">
+<meta property="og:image" content="https://gitee.com/zhang_shu_jun/img/raw/master/img/image-20200418113848523.png">
+<meta property="og:image" content="https://gitee.com/zhang_shu_jun/img/raw/master/img/image-20200418114236893.png">
+<meta property="og:image" content="https://gitee.com/zhang_shu_jun/img/raw/master/img/image-20200418114651651.png">
+<meta property="og:image" content="https://gitee.com/zhang_shu_jun/img/raw/master/img/image-20200515212745517.png">
+<meta property="og:image" content="https://gitee.com/zhang_shu_jun/img/raw/master/img/image-20200515213011227.png">
+<meta property="og:image" content="https://gitee.com/zhang_shu_jun/img/raw/master/img/image-20200515213145120.png">
+<meta property="og:image" content="https://gitee.com/zhang_shu_jun/img/raw/master/img/image-20200516103849321.png">
+<meta property="og:image" content="https://gitee.com/zhang_shu_jun/img/raw/master/img/concrete-bindings.png">
+<meta property="og:image" content="https://gitee.com/zhang_shu_jun/img/raw/master/img/legacy.png">
+<meta property="og:image" content="https://gitee.com/zhang_shu_jun/img/raw/master/img/image-20200516111652042.png">
+<meta property="og:image" content="https://gitee.com/zhang_shu_jun/img/raw/master/img/image-20200516145613505.png">
+<meta property="og:image" content="e:%5C%E4%B8%AA%E4%BA%BA%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93%5C%E5%90%8E%E7%AB%AF%5CSpringBoot.assets%5Cimage-20200516214400895.png">
+<meta property="og:image" content="https://gitee.com/zhang_shu_jun/img/raw/master/img/image-20200419105927428.png">
+<meta property="og:image" content="https://gitee.com/zhang_shu_jun/img/raw/master/img/image-20200419111105220.png">
+<meta property="og:image" content="https://gitee.com/zhang_shu_jun/img/raw/master/img/image-20200520214733113.png">
+<meta property="og:image" content="https://gitee.com/zhang_shu_jun/img/raw/master/img/image-20200520215237193.png">
+<meta property="og:image" content="https://gitee.com/zhang_shu_jun/img/raw/master/img/image-20200520220740995.png">
+<meta property="og:image" content="https://gitee.com/zhang_shu_jun/img/raw/master/img/image-20200524163815709-1597160885464.png">
+<meta property="og:image" content="https://gitee.com/zhang_shu_jun/img/raw/master/img/image-20200524173154447-1597160885465.png">
+<meta property="og:image" content="https://gitee.com/zhang_shu_jun/img/raw/master/img/image-20200524222151969-1597160885465.png">
+<meta property="og:image" content="https://gitee.com/zhang_shu_jun/img/raw/master/img/image-20200525223412219-1597160885466.png">
+<meta property="og:image" content="https://gitee.com/zhang_shu_jun/img/raw/master/img/image-20200527213904433-1597160885466.png">
+<meta property="article:published_time" content="2020-08-11T15:52:11.155Z">
+<meta property="article:modified_time" content="2020-08-11T15:59:33.659Z">
+<meta property="article:author" content="swag pum">
+<meta property="article:tag" content="Java">
+<meta property="article:tag" content="SpringBoot">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://gitee.com/zhang_shu_jun/img/raw/master/img/image-20200515202148560.png"><script src="/js/ui/mode.js"></script><link rel="stylesheet" href="/css/prism.css" type="text/css"></head><body><script defer src="https://cdn.jsdelivr.net/npm/animejs@latest/anime.min.js"></script><script defer src="/js/ui/fireworks.js"></script><canvas class="fireworks"></canvas><div class="container"><a class="sidebar-toggle hty-icon-button" id="menu-btn"><div class="hamburger hamburger--spin" type="button"><span class="hamburger-box"><span class="hamburger-inner"></span></span></div></a><div class="sidebar-toggle sidebar-overlay"></div><aside class="sidebar"><script defer src="/js/sidebar.js"></script><ul class="sidebar-nav"><li class="sidebar-nav-item sidebar-nav-toc hty-icon-button sidebar-nav-active" data-target="post-toc-wrap" title="Table of Contents"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-list-ordered"></use></svg></li><li class="sidebar-nav-item sidebar-nav-overview hty-icon-button" data-target="site-overview-wrap" title="Overview"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-passport-line"></use></svg></li></ul><div class="sidebar-panel" id="site-overview-wrap"><div class="site-info fix-top"><a class="site-author-avatar" href="/about/" title="swag pum"><img width="96" loading="lazy" src="/images/avatar.jpg" alt="swag pum"></a><div class="site-author-name"><a href="/about/">swag pum</a></div><a class="site-name" href="/about/site.html">swag pum的小站</a><sub class="site-subtitle">七月的肖邦</sub><div class="site-desciption"></div></div><nav class="site-state"><a class="site-state-item hty-icon-button icon-home" href="/" title="Home"><span class="site-state-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-home-4-line"></use></svg></span></a><div class="site-state-item"><a href="/archives/" title="Archives"><span class="site-state-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-archive-line"></use></svg></span><span class="site-state-item-count">5</span></a></div><div class="site-state-item"><a href="/categories/" title="Categories"><span class="site-state-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-folder-2-line"></use></svg></span><span class="site-state-item-count">2</span></a></div><div class="site-state-item"><a href="/tags/" title="Tags"><span class="site-state-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-price-tag-3-line"></use></svg></span><span class="site-state-item-count">6</span></a></div><a class="site-state-item hty-icon-button" href="https://yun.yunyoujun.cn" target="_blank" rel="noopener" title="文档"><span class="site-state-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-settings-line"></use></svg></span></a></nav><hr style="margin-bottom:0.5rem"><div class="links-of-author"><a class="links-of-author-item hty-icon-button" rel="noopener" href="/atom.xml" title="RSS" target="_blank" style="color:orange"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-rss-line"></use></svg></a><a class="links-of-author-item hty-icon-button" rel="noopener" href="https://wpa.qq.com/msgrd?v=3&amp;uin=1319961983&amp;site=qq&amp;menu=yes" title="QQ" target="_blank" style="color:#12B7F5"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-qq-line"></use></svg></a><a class="links-of-author-item hty-icon-button" rel="noopener" href="https://github.com/swagpum" title="GitHub" target="_blank" style="color:#6e5494"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-github-line"></use></svg></a><a class="links-of-author-item hty-icon-button" rel="noopener" href="https://weibo.com/swag_pum" title="微博" target="_blank" style="color:#E6162D"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-weibo-line"></use></svg></a><a class="links-of-author-item hty-icon-button" rel="noopener" href="https://www.douban.com/" title="豆瓣" target="_blank" style="color:#007722"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-douban-line"></use></svg></a><a class="links-of-author-item hty-icon-button" rel="noopener" href="https://music.163.com/" title="网易云音乐" target="_blank" style="color:#C20C0C"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-netease-cloud-music-line"></use></svg></a><a class="links-of-author-item hty-icon-button" rel="noopener" href="https://www.zhihu.com/" title="知乎" target="_blank" style="color:#0084FF"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-zhihu-line"></use></svg></a><a class="links-of-author-item hty-icon-button" rel="noopener" href="https://space.bilibili.com/" title="哔哩哔哩" target="_blank" style="color:#FF8EB3"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-bilibili-line"></use></svg></a><a class="links-of-author-item hty-icon-button" rel="noopener" href="https://twitter.com/" title="Twitter" target="_blank" style="color:#1da1f2"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-twitter-line"></use></svg></a><a class="links-of-author-item hty-icon-button" rel="noopener" href="https://travellings.now.sh/" title="Travelling" target="_blank" style="color:var(--hty-text-color)"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-send-plane-2-line"></use></svg></a></div><hr style="margin:0.5rem 1rem"><div class="links"><a class="links-item hty-icon-button" href="/links/" title="我的小伙伴们" style="color:dodgerblue"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-genderless-line"></use></svg></a></div><br><a class="links-item hty-icon-button" id="toggle-mode-btn" href="javascript:;" title="Mode" style="color: #f1cb64"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-contrast-2-line"></use></svg></a></div><div class="sidebar-panel sidebar-panel-active" id="post-toc-wrap"><div class="post-toc"><div class="post-toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#背景"><span class="toc-number">1.</span> <span class="toc-text">背景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#解决"><span class="toc-number">2.</span> <span class="toc-text">解决</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#微服务"><span class="toc-number">3.</span> <span class="toc-text">微服务</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#项目部署"><span class="toc-number"></span> <span class="toc-text">项目部署</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#使用Spring-Initializer快速创建Spring-Boot项目"><span class="toc-number">0.1.</span> <span class="toc-text">使用Spring Initializer快速创建Spring Boot项目</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#问题"><span class="toc-number">0.2.</span> <span class="toc-text">问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#导入的依赖"><span class="toc-number">0.3.</span> <span class="toc-text">导入的依赖</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#主程序类（主入口类）"><span class="toc-number">0.4.</span> <span class="toc-text">主程序类（主入口类）</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#配置文件"><span class="toc-number"></span> <span class="toc-text">配置文件</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#YAML语法"><span class="toc-number">0.1.</span> <span class="toc-text">YAML语法</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#基本语法"><span class="toc-number">0.1.0.1.</span> <span class="toc-text">基本语法</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#值的写法"><span class="toc-number">0.1.0.2.</span> <span class="toc-text">值的写法</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#配置文件值注入"><span class="toc-number">0.2.</span> <span class="toc-text">配置文件值注入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#配置文件加载位置"><span class="toc-number">0.3.</span> <span class="toc-text">配置文件加载位置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#自动配置原理"><span class="toc-number">0.4.</span> <span class="toc-text">自动配置原理</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#日志"><span class="toc-number"></span> <span class="toc-text">日志</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#遗留问题"><span class="toc-number">0.1.</span> <span class="toc-text">遗留问题</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Web开发"><span class="toc-number"></span> <span class="toc-text">Web开发</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#SpringBoot对静态资源的映射规则"><span class="toc-number">0.1.</span> <span class="toc-text">SpringBoot对静态资源的映射规则</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#模板引擎"><span class="toc-number">0.2.</span> <span class="toc-text">模板引擎</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#使用外置的Servlet容器"><span class="toc-number">1.</span> <span class="toc-text">使用外置的Servlet容器</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#SpringSecurity（安全）"><span class="toc-number"></span> <span class="toc-text">SpringSecurity（安全）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Shiro"><span class="toc-number"></span> <span class="toc-text">Shiro</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Swagger"><span class="toc-number"></span> <span class="toc-text">Swagger</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#SpringBoot集成Swagger"><span class="toc-number">0.1.</span> <span class="toc-text">SpringBoot集成Swagger</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#配置Swagger"><span class="toc-number">0.2.</span> <span class="toc-text">配置Swagger</span></a></li></ol></li></ol></div></div></div></aside><main class="sidebar-translate" id="content"><div id="post"><article class="post-block" itemscope itemtype="https://schema.org/Article"><link itemprop="mainEntityOfPage" href="https://github.com/swagpum/swagpum.github.io/tree/master/2020/08/11/SpringBoot/"><span hidden itemprop="author" itemscope itemtype="https://schema.org/Person"><meta itemprop="name" content="swag pum"><meta itemprop="description"></span><span hidden itemprop="publisher" itemscope itemtype="https://schema.org/Organization"><meta itemprop="name" content="swag pum的小站"></span><header class="post-header"><h1 class="post-title" itemprop="name headline">SpringBoot</h1><div class="post-meta"><div class="post-time" style="display:inline-block"><span class="post-meta-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-calendar-line"></use></svg></span> <time title="Created: 2020-08-11 23:52:11" itemprop="dateCreated datePublished" datetime="2020-08-11T23:52:11+08:00">2020-08-11</time></div><div class="post-classify"><span class="post-category"><span class="post-meta-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-folder-line"></use></svg></span> <span itemprop="about" itemscope itemtype="https://schema.org/Thing"><a class="category" href="/categories/%E7%AC%94%E8%AE%B0/" style="--text-color:dimgray" itemprop="url" rel="index"><span itemprop="text">笔记</span></a></span></span><span class="post-tag"><span class="post-meta-divider">-</span><a class="tag" href="/tags/Java/" style="--text-color:crimson"><span class="post-meta-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-price-tag-3-line"></use></svg></span><span class="tag-name">Java</span></a><a class="tag" href="/tags/SpringBoot/" style="--text-color:#ff00cc"><span class="post-meta-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-price-tag-3-line"></use></svg></span><span class="tag-name">SpringBoot</span></a></span></div></div></header><section class="post-body" itemprop="articleBody"><div class="post-content markdown-body" style="--smc-primary:#0078E7;"><blockquote>
+<p>前后端分离</p>
+<p>前端只需要独立编写客户端代码，后端也只需要独立编写服务端代码提供数据接口即可</p>
+<p>前端通过Ajax请求来访问后端的数据接口，将Model展示到View中即可</p>
+<p>前后端开发者只需要提前约定好接口文档（URL、参数、数据类型…），然后分别独立开发即可，前端可以造假数据进行测试，完全不需要依赖于后端，最后完成前后端集成即可，真正实现了前后端应用的解耦合，极大地提升了开发效率。</p>
+<p>前端应用：负责数据展示和用户交互</p>
+<p>后端应用：负责提供数据处理接口</p>
+<p>前端HTML –&gt; Ajax –&gt; RESTful后端数据接口</p>
+</blockquote>
+<a id="more"></a>
+
+<h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>J2EE笨重的开发，繁多的配置、低下的开发效率、复杂的部署流程、第三方技术集成难度大</p>
+<h2 id="解决"><a href="#解决" class="headerlink" title="解决"></a>解决</h2><p>“Spring全家桶”时代</p>
+<p>Spring Boot -&gt; J2EE开发的一站式解决方案</p>
+<p>Spring Cloud -&gt; 分布式整体解决方案</p>
+<h2 id="微服务"><a href="#微服务" class="headerlink" title="微服务"></a>微服务</h2><p><img src="https://gitee.com/zhang_shu_jun/img/raw/master/img/image-20200515202148560.png" alt="image-20200515202148560" loading="lazy"></p>
+<p>每一个功能元素最终都是一个可独立替换和独立升级的软件单元</p>
+<br>
+
+<h1 id="项目部署"><a href="#项目部署" class="headerlink" title="项目部署"></a>项目部署</h1><h3 id="使用Spring-Initializer快速创建Spring-Boot项目"><a href="#使用Spring-Initializer快速创建Spring-Boot项目" class="headerlink" title="使用Spring Initializer快速创建Spring Boot项目"></a>使用Spring Initializer快速创建Spring Boot项目</h3><p>IDE都支持使用Spring的项目创建向导快速创建一个Spring Boot项目</p>
+<p>选择我们需要的模块，向导会联网创建Spring Boot项目</p>
+<p>默认生成的Spring Boot项目：</p>
+<ul>
+<li>主程序已经生成好了，我们只需要写自己的逻辑代码</li>
+<li>resources文件夹中的目录结构<ul>
+<li>static：保存所有的静态资源（js  css  images）</li>
+<li>templates：保存所有的模板页面（Spring Boot默认jar包使用嵌入式的Tomcat，默认不支持JSP页面），可以使用模板引擎（freemarker、thymeleaf）</li>
+<li>application.properties：Spring Boot应用的配置文件，可以修改一些默认设置</li>
+</ul>
+</li>
+</ul>
+<br>
+
+<h3 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h3><p>idea<strong>结构图中不显示项目名而是显示项目中的模块的问题</strong></p>
+<img src="https://gitee.com/zhang_shu_jun/img/raw/master/img/image-20200418112750250.png" alt="image-20200418112750250" style="zoom:80%;" / loading="lazy">
+
+<p><strong>解决</strong></p>
+<img src="https://gitee.com/zhang_shu_jun/img/raw/master/img/image-20200418113848523.png" alt="image-20200418113848523" style="zoom:80%;" / loading="lazy">
+
+<p><img src="https://gitee.com/zhang_shu_jun/img/raw/master/img/image-20200418114236893.png" alt="image-20200418114236893" loading="lazy"></p>
+<p>点击项目名字，除了最上面的不用删除，其他的都移除</p>
+<p><img src="https://gitee.com/zhang_shu_jun/img/raw/master/img/image-20200418114651651.png" alt="image-20200418114651651" loading="lazy"></p>
+<p>问题解决</p>
+<br>
+
+<p>springboot控制台的banner可以根据我们的喜好更改^_^</p>
+<p><a href="https://www.bootschool.net/ascii-art/search" target="_blank" rel="noopener">banner在线生成</a></p>
+<br>
+
+
+
+<h3 id="导入的依赖"><a href="#导入的依赖" class="headerlink" title="导入的依赖"></a>导入的依赖</h3><p>spring-boot-starter-web：</p>
+<p>​        spring-boot-starter是spring-boot场景启动器，帮我们导入了web模块正常运行所依赖的组件</p>
+<p>Spring Boot将所有的功能场景都抽取出来，做成一个个的starters（启动器），只需要在项目里面引入这些starter，相关场景的所有依赖都会导入进来。要用什么功能就导入什么场景启动器</p>
+<br>
+
+<h3 id="主程序类（主入口类）"><a href="#主程序类（主入口类）" class="headerlink" title="主程序类（主入口类）"></a>主程序类（主入口类）</h3><p>==@SpringBootApplication==：Spring Boot应用标注在某个类上说明这个类是SpringBoot的主配置类，SpringBoot就应该运行这个类的main方法来启动SpringBoot应用</p>
+<p>==@SpringBootConfiguration==：SpringBoot的配置类，标注在某个类上，表示这是一个Spring Boot的配置类</p>
+<p>==@EnableAutoConfiguration==：开启自动配置功能，以前我们需要配置的东西，SpringBoot帮我们配置了</p>
+<p>==@AutoConfigurationPackage==：自动配置包</p>
+<p>​        @Import(AutoConfigurationPackages.Registrar.class)：Spring的底层注解@Import，给容器中导入一个组件，导入的组件AutoConfigurationPackages.Registrar.class；</p>
+<p>将主配置类（==@SpringBootApplication==标注的类）的所在包及下面所有子包里面的所有组件扫描到Spring容器</p>
+<p>​    </p>
+<br>
+
+<h1 id="配置文件"><a href="#配置文件" class="headerlink" title="配置文件"></a>配置文件</h1><p>SpringBoot使用一个全局的配置文件，配置文件名是固定的</p>
+<ul>
+<li>application.properties</li>
+<li>application.yml</li>
+</ul>
+<p>配置文件的作用：修改SpringBoot自动配置的默认值；SpringBoot在底层都给我们自动配置好</p>
+<p>YAML（YAML Ain’t Markup Language）</p>
+<p>标记语言：</p>
+<p>​    以前的配置文件，大多都使用的是xxxx.xml文件</p>
+<p>​    YAML：以数据为中心，比json、xml等更适合做配置文件</p>
+<pre class=" language-yml"><code class="language-yml">server
+  port: 8081</code></pre>
+<br>
+
+<h3 id="YAML语法"><a href="#YAML语法" class="headerlink" title="YAML语法"></a>YAML语法</h3><h5 id="基本语法"><a href="#基本语法" class="headerlink" title="基本语法"></a>基本语法</h5><p>k:(空格)v：表示一对键值对（空格必须有）       属性和值大小写敏感</p>
+<p>以<strong>空格</strong>的缩进来控制层级关系；只要是左对齐的一列数据，都是同一个层级的</p>
+<pre><code>server:
+    port: 8081
+    path: /hello</code></pre><h5 id="值的写法"><a href="#值的写法" class="headerlink" title="值的写法"></a>值的写法</h5><p>字面量：普通的值（数字，字符串，布尔）</p>
+<p><img src="https://gitee.com/zhang_shu_jun/img/raw/master/img/image-20200515212745517.png" alt="image-20200515212745517" loading="lazy"></p>
+<p>对象、Map（属性和值）（）键值对</p>
+<p><img src="https://gitee.com/zhang_shu_jun/img/raw/master/img/image-20200515213011227.png" alt="image-20200515213011227" loading="lazy"></p>
+<p>数组（List、Set）</p>
+<p><img src="https://gitee.com/zhang_shu_jun/img/raw/master/img/image-20200515213145120.png" alt="image-20200515213145120" loading="lazy"></p>
+<br>
+
+<h3 id="配置文件值注入"><a href="#配置文件值注入" class="headerlink" title="配置文件值注入"></a>配置文件值注入</h3><p><strong>@Value获取值和@ConfigurationProperties获取值比较</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>@ConfigurationProperties</th>
+<th>@Value</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>功能</td>
+<td>批量注入配置文件中的属性</td>
+<td>一个个指定</td>
+</tr>
+<tr>
+<td>松散绑定（松散语法）</td>
+<td>支持</td>
+<td>不支持</td>
+</tr>
+<tr>
+<td>SpEL</td>
+<td>不支持</td>
+<td>支持</td>
+</tr>
+<tr>
+<td>JSR303数据校验</td>
+<td>支持</td>
+<td>不支持</td>
+</tr>
+<tr>
+<td>复杂类型封装</td>
+<td>支持</td>
+<td>不支持</td>
+</tr>
+</tbody></table>
+<p><strong>@PropertySource &amp; @ImportResource</strong></p>
+<p>@PropertySource：加载指定的配置文件（只能是properties文件）</p>
+<pre class=" language-xml"><code class="language-xml">@PropertySource(value={"classpath:person.properties"})</code></pre>
+<p>@ImportResource：导入Spring的配置文件，让配置文件里面的内容生效</p>
+<p>SpringBoot里面没有Spring的配置文件，我们自己编写的配置文件也不能自动识别</p>
+<p>想让Spring的配置文件生效，加载进来，需要把@ImportResource标注在一个配置类上</p>
+<pre><code>@ImportResource(locations={&quot;classpath:beans.xml&quot;})</code></pre><p>SpringBoot推荐给容器中添加组件的方式：推荐使用全注解的方式</p>
+<ol>
+<li>配置类======Spring配置文件</li>
+<li>使用@Bean给容器中添加组件</li>
+</ol>
+<br>
+
+<h3 id="配置文件加载位置"><a href="#配置文件加载位置" class="headerlink" title="配置文件加载位置"></a>配置文件加载位置</h3><p>springboot启动会扫描以下位置的application.properties或者application.yml文件作为Spring Boot的默认配置文件</p>
+<p>加载配置文件时优先级从高到低：</p>
+<ol>
+<li>-file:./config/        （项目下的config文件夹下）</li>
+<li>-file:./            （直接在项目下）</li>
+<li>-classpath:/config/              （项目中src/main/resources/config文件夹下）</li>
+<li>-classpath:/                 （项目中src/main/resources文件夹下）</li>
+</ol>
+<p>高优先级的配置会覆盖低优先级的配置</p>
+<h3 id="自动配置原理"><a href="#自动配置原理" class="headerlink" title="自动配置原理"></a>自动配置原理</h3><p><strong>自动配置类必须在一定的条件下才能生效</strong></p>
+<p>我们怎么知道哪些自动配置类生效？</p>
+<p>可以通过在控制台启用 debug=true属性来让控制台打印自动配置报告，这样我们就可以很方便地知道哪些自动配置类生效</p>
+<br>
+
+<br>
+
+<h1 id="日志"><a href="#日志" class="headerlink" title="日志"></a>日志</h1><p><img src="https://gitee.com/zhang_shu_jun/img/raw/master/img/image-20200516103849321.png" alt="image-20200516103849321" loading="lazy"></p>
+<p>左边选一个门面（抽象层）、右边来选一个实现</p>
+<p>日志门面：SLF4J</p>
+<p>日志实现：Logback</p>
+<p>SpringBoot：底层是用Spring框架，Spring框架默认是用JCL</p>
+<p>==SpringBoot选用SLF4J 和 logback==</p>
+<p><img src="https://gitee.com/zhang_shu_jun/img/raw/master/img/concrete-bindings.png" alt="img" loading="lazy"></p>
+<h3 id="遗留问题"><a href="#遗留问题" class="headerlink" title="遗留问题"></a>遗留问题</h3><p>a（slf4j+logback）：Spring（commons-logging）、Hibernate（jboss-logging）、Mybatis、xxxx</p>
+<p>统一日志记录，即 使用别的框架和我一起统一使用slf4j进行输出</p>
+<p><img src="https://gitee.com/zhang_shu_jun/img/raw/master/img/legacy.png" alt="img" loading="lazy"></p>
+<p>如何让系统中所有的日志都统一到slf4j？</p>
+<ol>
+<li>将系统中其他日志框架先排除出去</li>
+<li>用中间包来替换原有的日志框架</li>
+<li>导入slf4j其他的实现</li>
+</ol>
+<p>底层依赖关系</p>
+<p><img src="https://gitee.com/zhang_shu_jun/img/raw/master/img/image-20200516111652042.png" alt="image-20200516111652042" loading="lazy"></p>
+<p>总结：</p>
+<ol>
+<li>SpringBoot底层也是使用slf4j+logback的方式进行日志记录</li>
+<li>SpringBoot也把其他的日志都替换成了slf4j</li>
+</ol>
+<p><img src="https://gitee.com/zhang_shu_jun/img/raw/master/img/image-20200516145613505.png" alt="image-20200516145613505" loading="lazy"></p>
+<p><br><br></p>
+<h1 id="Web开发"><a href="#Web开发" class="headerlink" title="Web开发"></a>Web开发</h1><h3 id="SpringBoot对静态资源的映射规则"><a href="#SpringBoot对静态资源的映射规则" class="headerlink" title="SpringBoot对静态资源的映射规则"></a>SpringBoot对静态资源的映射规则</h3><pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">addResourceHandlers</span><span class="token punctuation">(</span>ResourceHandlerRegistry registry<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span><span class="token keyword">this</span><span class="token punctuation">.</span>resourceProperties<span class="token punctuation">.</span><span class="token function">isAddMappings</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        logger<span class="token punctuation">.</span><span class="token function">debug</span><span class="token punctuation">(</span><span class="token string">"Default resource handling disabled"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+        Duration cachePeriod <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>resourceProperties<span class="token punctuation">.</span><span class="token function">getCache</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getPeriod</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        CacheControl cacheControl <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>resourceProperties<span class="token punctuation">.</span><span class="token function">getCache</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getCachecontrol</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toHttpCacheControl</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>registry<span class="token punctuation">.</span><span class="token function">hasMappingForPattern</span><span class="token punctuation">(</span><span class="token string">"/webjars/**"</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">customizeResourceHandlerRegistration</span><span class="token punctuation">(</span>registry<span class="token punctuation">.</span><span class="token function">addResourceHandler</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">{</span><span class="token string">"/webjars/**"</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">addResourceLocations</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">{</span><span class="token string">"classpath:/META-INF/resources/webjars/"</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">setCachePeriod</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">getSeconds</span><span class="token punctuation">(</span>cachePeriod<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">setCacheControl</span><span class="token punctuation">(</span>cacheControl<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        String staticPathPattern <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>mvcProperties<span class="token punctuation">.</span><span class="token function">getStaticPathPattern</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>registry<span class="token punctuation">.</span><span class="token function">hasMappingForPattern</span><span class="token punctuation">(</span>staticPathPattern<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">customizeResourceHandlerRegistration</span><span class="token punctuation">(</span>registry<span class="token punctuation">.</span><span class="token function">addResourceHandler</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">{</span>staticPathPattern<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">addResourceLocations</span><span class="token punctuation">(</span>WebMvcAutoConfiguration<span class="token punctuation">.</span><span class="token function">getResourceLocations</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>resourceProperties<span class="token punctuation">.</span><span class="token function">getStaticLocations</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">setCachePeriod</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">getSeconds</span><span class="token punctuation">(</span>cachePeriod<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">setCacheControl</span><span class="token punctuation">(</span>cacheControl<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<ol>
+<li><p>所有/webjars/**，都去classpath:/META-INF/resources/webjars/ 找资源</p>
+<p>webjars：以jar包的方式引入静态资源</p>
+<p><img src="E:%5C%E4%B8%AA%E4%BA%BA%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93%5C%E5%90%8E%E7%AB%AF%5CSpringBoot.assets%5Cimage-20200516214400895.png" alt="image-20200516214400895" loading="lazy"></p>
+<ol start="2">
+<li>“/**”访问当前项目的任何资源，都去（静态资源的文件夹）找映射</li>
+</ol>
+<pre><code>&quot;classpath:/META-INF/resources/&quot;,
+&quot;classpath:/resources/&quot;,
+&quot;classpath:/static/&quot;,
+&quot;classpath:/public/&quot;
+&quot;/&quot;：当前项目的根路径</code></pre><ol start="3">
+<li>欢迎页；静态资源文件夹下的所有index.html页面，被 “/**” 映射</li>
+<li>所有的 **/favicon.ico 都是在静态资源文件下找</li>
+</ol>
+</li>
+</ol>
+<br>
+
+<h3 id="模板引擎"><a href="#模板引擎" class="headerlink" title="模板引擎"></a>模板引擎</h3><p>SpringBoot推荐Thymeleaf：语法更简单，功能更强大</p>
+<pre class=" language-xml"><code class="language-xml"><span class="token comment" spellcheck="true">&lt;!--Thymeleaf 我们都是基于3.x开发--></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">></span></span>org.thymeleaf<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">></span></span>thymeleaf-spring5<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">></span></span>org.thymeleaf.extras<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">></span></span>thymeleaf-extras-java8time<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">></span></span></code></pre>
+<p>我们将html放在我们的templates目录下即可！</p>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">final</span> String DEFAULT_PREFIX <span class="token operator">=</span> <span class="token string">"classpath:/templates/"</span><span class="token punctuation">;</span>
+<span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">final</span> String DEFAULT_SUFFIX <span class="token operator">=</span> <span class="token string">".html"</span><span class="token punctuation">;</span></code></pre>
+<p><img src="https://gitee.com/zhang_shu_jun/img/raw/master/img/image-20200419105927428.png" alt="image-20200419105927428" loading="lazy"></p>
+<p><img src="https://gitee.com/zhang_shu_jun/img/raw/master/img/image-20200419111105220.png" alt="image-20200419111105220" loading="lazy"></p>
+<p><img src="https://gitee.com/zhang_shu_jun/img/raw/master/img/image-20200520214733113.png" alt="image-20200520214733113" loading="lazy"></p>
+<p><img src="https://gitee.com/zhang_shu_jun/img/raw/master/img/image-20200520215237193.png" alt="image-20200520215237193" loading="lazy"></p>
+<p><img src="https://gitee.com/zhang_shu_jun/img/raw/master/img/image-20200520220740995.png" alt="image-20200520220740995" loading="lazy"></p>
+<br>
+
+<h2 id="使用外置的Servlet容器"><a href="#使用外置的Servlet容器" class="headerlink" title="使用外置的Servlet容器"></a>使用外置的Servlet容器</h2><p>jar包：执行SpringBoot主类的main方法，启动IOC容器，创建嵌入式的Servlet容器</p>
+<p>war包：启动服务器，服务器启动SpringBoot应用【SpringBootServletInitializer】，启动IOC容器</p>
+<br>
+
+<h1 id="SpringSecurity（安全）"><a href="#SpringSecurity（安全）" class="headerlink" title="SpringSecurity（安全）"></a>SpringSecurity（安全）</h1><p>在web开发中，安全第一位！过滤器，拦截器~      属于非功能性需求</p>
+<p>shiro、SpringSecurity：很像~除了类不一样、名字不一样</p>
+<ul>
+<li>功能权限</li>
+<li>访问权限</li>
+<li>菜单权限</li>
+<li>拦截器、过滤器：大量的原生代码~冗余</li>
+</ul>
+<p><img src="https://gitee.com/zhang_shu_jun/img/raw/master/img/image-20200524163815709-1597160885464.png" alt="image-20200524163815709" loading="lazy"></p>
+<p>自动跳到登录页面时，登录用户名和密码（连接数据库时）</p>
+<p><img src="https://gitee.com/zhang_shu_jun/img/raw/master/img/image-20200524173154447-1597160885465.png" alt="image-20200524173154447" loading="lazy"></p>
+<br>
+
+<h1 id="Shiro"><a href="#Shiro" class="headerlink" title="Shiro"></a>Shiro</h1><p><strong>Shiro架构（外部）</strong></p>
+<p>从外部来看Shiro，即从应用程序角度来观察如何使用shiro完成工作</p>
+<p><img src="https://gitee.com/zhang_shu_jun/img/raw/master/img/image-20200524222151969-1597160885465.png" alt="image-20200524222151969" loading="lazy"></p>
+<ul>
+<li>Subject：应用代码直接交互的对象是Subject，也就是说Shiro的对外API核心就是Subject，Subject代表了当前的用户，这个用户不一定是一个具体的人，与当前应用交互的任何东西都是Subject，如网络爬虫、机器人等，与Subject的所有交互都会委托给SecurityManager；Subject其实是一个门面，SecurityManager才是实际的执行者</li>
+<li>SecurityManager：安全管理器，即所有与安全有关的操作都会与SecurityManager交互，并且它管理着所有的Subject，可以看出它是Shiro的核心，它负责与Shiro的其他组件进行交互，它相当于SpringMVC的DispatcherServlet的角色</li>
+</ul>
+<p><img src="https://gitee.com/zhang_shu_jun/img/raw/master/img/image-20200525223412219-1597160885466.png" alt="image-20200525223412219" loading="lazy"></p>
+<br>
+
+<h1 id="Swagger"><a href="#Swagger" class="headerlink" title="Swagger"></a>Swagger</h1><ul>
+<li>号称世界上最流行的Api框架</li>
+<li>RestFul Api文档在线自动生成工具=&gt;==Api文档与API定义同步更新==</li>
+<li>直接运行，可以在线测试API接口</li>
+<li>支持多种语言：Java、PHP …</li>
+</ul>
+<p><a href="https://swagger.io/" target="_blank" rel="noopener">官网</a></p>
+<p>在项目使用Swagger需要springbox</p>
+<ul>
+<li>swagger2</li>
+<li>ui</li>
+</ul>
+<h3 id="SpringBoot集成Swagger"><a href="#SpringBoot集成Swagger" class="headerlink" title="SpringBoot集成Swagger"></a>SpringBoot集成Swagger</h3><ol>
+<li><p>新建一个SpringBoot-web项目</p>
+</li>
+<li><p>导入相关依赖</p>
+<pre><code>&lt;!-- https://mvnrepository.com/artifact/io.springfox/springfox-swagger2 --&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;io.springfox&lt;/groupId&gt;
+    &lt;artifactId&gt;springfox-swagger2&lt;/artifactId&gt;
+    &lt;version&gt;2.9.2&lt;/version&gt;
+&lt;/dependency&gt;
+
+&lt;!-- https://mvnrepository.com/artifact/io.springfox/springfox-swagger-ui --&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;io.springfox&lt;/groupId&gt;
+    &lt;artifactId&gt;springfox-swagger-ui&lt;/artifactId&gt;
+    &lt;version&gt;2.9.2&lt;/version&gt;
+&lt;/dependency&gt;</code></pre></li>
+<li><p>编写一个Hello工程</p>
+</li>
+<li><p>配置swagger ==&gt; Config</p>
+<pre><code>@Configuration
+@EnableSwagger2         //开启Swagger2
+public class SwaggerConfig {
+}</code></pre></li>
+<li><p>测试运行：<a href="http://localhost:8080/swagger-ui.html" target="_blank" rel="noopener">http://localhost:8080/swagger-ui.html</a></p>
+</li>
+</ol>
+<p><img src="https://gitee.com/zhang_shu_jun/img/raw/master/img/image-20200527213904433-1597160885466.png" alt="image-20200527213904433" loading="lazy"></p>
+<h3 id="配置Swagger"><a href="#配置Swagger" class="headerlink" title="配置Swagger"></a>配置Swagger</h3><p>Swagger的bean实例Docker</p>
+<pre><code>@Configuration
+@EnableSwagger2         //开启Swagger2
+public class SwaggerConfig {
+
+    //配置了Swagger的Docket的bean实例
+    @Bean
+    public Docket docket(){
+        return new Docket(DocumentationType.SWAGGER_2)
+                .apiInfo(apiInfo());
+    }
+
+    //配置Swagger信息=apiInfo
+    private ApiInfo apiInfo(){
+        //作者信息
+        Contact contact = new Contact(&quot;天才君&quot;, &quot;https://blog.kuangstudy.com/&quot;, &quot;13278374747@qq.com&quot;);
+
+        return new ApiInfo(
+                &quot;天才君的SwaggerAPI文档&quot;,
+                &quot;99%的努力加上1%的天赋造就一个你&quot;,
+                &quot;1.0&quot;,
+                &quot;urn:tos&quot;,
+                 contact,
+                &quot;Apache 2.0&quot;,
+                &quot;http://www.apache.org/licenses/LICENSE-2.0&quot;,
+                 new ArrayList());
+    }
+}</code></pre><p><strong>Swagger配置扫描接口</strong></p>
+<pre><code>@Bean
+public Docket docket(){
+    return new Docket(DocumentationType.SWAGGER_2)
+        .apiInfo(apiInfo())
+        .select()
+        //RequestHandlerSelectors  配置要扫描接口的方式
+        //basePackage：指定要扫描的包
+        //any()：扫描全部
+        //none()：不扫描
+        //withClassAnnotation：扫描类上的注解，参数是一个注解的反射对象
+        //withMethodAnnotation：扫描方法上的注解
+        .apis(RequestHandlerSelectors.basePackage(&quot;cn.sj.swagger.controller&quot;))
+        //paths()：过滤什么路径
+        .paths(PathSelectors.ant(&quot;/sj/**&quot;))
+        .build();
+}</code></pre><p><strong>配置是否启动Swagger</strong></p>
+<pre><code>@Bean
+public Docket docket(){
+    return new Docket(DocumentationType.SWAGGER_2)
+        .apiInfo(apiInfo())
+        .enable(false)
+        //enable：是否启动Swagger，如果为false，则Swagger不能在浏览器中访问
+        .select()
+        .apis(RequestHandlerSelectors.basePackage(&quot;cn.sj.swagger.controller&quot;))
+        .build();
+}</code></pre></div><div id="reward-container"><span class="hty-icon-button button-glow" id="reward-button" title="Donate" onclick="var qr = document.getElementById(&quot;qr&quot;); qr.style.display = (qr.style.display === &quot;none&quot;) ? &quot;block&quot; : &quot;none&quot;;"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-hand-coin-line"></use></svg></span><div id="reward-comment">I'm so cute. Please give me money.</div><div id="qr" style="display:none;"><div style="display:inline-block"><a href="/images/alipay-qrcode.jpg"><img loading="lazy" src="/images/alipay-qrcode.jpg" alt="支付宝" title="支付宝"></a><div><span style="color:#00A3EE"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-alipay-line"></use></svg></span></div></div><div style="display:inline-block"><a href="/images/qqpay-qrcode.jpg"><img loading="lazy" src="/images/qqpay-qrcode.jpg" alt="QQ 支付" title="QQ 支付"></a><div><span style="color:#12B7F5"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-qq-line"></use></svg></span></div></div><div style="display:inline-block"><a href="/images/wechatpay-qrcode.jpg"><img loading="lazy" src="/images/wechatpay-qrcode.jpg" alt="微信支付" title="微信支付"></a><div><span style="color:#2DC100"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-wechat-pay-line"></use></svg></span></div></div></div></div><ul class="post-copyright"><li class="post-copyright-author"><strong>Post author: </strong>swag pum</li><li class="post-copyright-link"><strong>Post link: </strong><a href="https://github.com/swagpum/swagpum.github.io/tree/master/2020/08/11/SpringBoot/" title="SpringBoot">https://github.com/swagpum/swagpum.github.io/tree/master/2020/08/11/SpringBoot/</a></li><li class="post-copyright-license"><strong>Copyright Notice: </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="noopener" title="CC BY-NC-SA 4.0 "><svg class="icon"><use xlink:href="#icon-creative-commons-line"></use></svg><svg class="icon"><use xlink:href="#icon-creative-commons-by-line"></use></svg><svg class="icon"><use xlink:href="#icon-creative-commons-nc-line"></use></svg><svg class="icon"><use xlink:href="#icon-creative-commons-sa-line"></use></svg></a> unless stating additionally.</li></ul></section></article><div class="post-nav"><div class="post-nav-item"></div><div class="post-nav-item"><a class="post-nav-next" href="/2020/07/31/Vue.js/" rel="next" title="Vue学习笔记"><span class="post-nav-text">Vue学习笔记</span><svg class="icon" aria-hidden="true"><use xlink:href="#icon-arrow-right-s-line"></use></svg></a></div></div></div><div id="comment"><div class="comment-tooltip text-center"><span>点击按钮跳转 GitHub Issues 评论。</span><br><span>若没有本文 Issue，您可以使用 Comment 模版新建。</span><br><a class="hty-button hty-button--raised" id="github-issues" href="https://github.com/swagpum/swagpum.github.io/issues?q=is:issue+SpringBoot">GitHub Issues</a></div></div></main><footer class="sidebar-translate" id="footer"><div class="copyright"><span>&copy; 2019 – 2020 </span><span class="with-love" id="animate"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-cloud-line"></use></svg></span><span class="author"> swag pum</span></div><div class="powered"><span>Powered by <a href="https://hexo.io" target="_blank" rel="noopener">Hexo</a> v4.2.1</span><span class="footer-separator">|</span><span>Theme - <a rel="noopener" href="https://github.com/YunYouJun/hexo-theme-yun" target="_blank"><span>Yun</span></a> v0.9.2</span></div></footer><a class="hty-icon-button" id="goUp" aria-label="back-to-top" href="#"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-arrow-up-s-line"></use></svg><svg class="progress-circle-container" viewBox="0 0 100 100"><circle class="progress-circle" id="progressCircle" cx="50" cy="50" r="48" fill="none" stroke="#0078E7" stroke-width="2" stroke-linecap="round"></circle></svg></a><div class="aplayer no-destroy" id="aplayer" data-id="308168565" data-server="netease" data-type="playlist" data-fixed="true" data-theme="#0078E7" data-loop="all" data-order="list" data-preload="auto" data-volume="0.7" data-mutex data-lrctype="0" data-listmaxheight="340px" data-storagename="metingjs"></div></div><script defer src="/js/utils.js"></script><script defer src="/js/hexo-theme-yun.js"></script></body></html>
